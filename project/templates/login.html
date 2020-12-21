@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a href="{% url 'social:begin' 'facebook' %}">Войти с помощью Facebook</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<h1 align="center" >Веб приложение, с помощью которого можно хранить свои впечатления о
+посещаемых местах.</h1>
+{% endblock %}

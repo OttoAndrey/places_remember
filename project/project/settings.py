@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'fb_auth.apps.FbAuthConfig',
+    'places.apps.PlacesConfig',
 ]
 
 MIDDLEWARE = [

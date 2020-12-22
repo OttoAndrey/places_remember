@@ -154,3 +154,7 @@ STATIC_URL = '/static/'
 
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+
+if env.str('ENV') == 'development':
+    del DATABASES['default']['OPTIONS']['sslmode']

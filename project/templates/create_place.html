@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{% block header %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      {% for ass in backends.associated %}
+        {% if ass.provider == 'facebook' %}
+          <img src="{{ ass.extra_data.picture.data.url }}" alt="" width="150" height="150" style="border-radius: 50%">
+            <div class="col-1">
+              <p> {{ ass.extra_data.name }} </p>
+            </div>
+            <div class="col-1">
+              <button class="btn btn-dark">
+                <a href="{% url 'logout' %}">Выйти</a>
+              </button>
+            </div>
+            <div class="col-1">
+            <button class="btn btn-dark">
+              <a href="{% url 'home' %}">Главная</a>
+            </button>
+            </div>
+            Скопируйте и вставьте широту и долготу точки в соответствующие поля.
+
+        {% endif %}
+      {% endfor %}
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<div class="container mt-1">
+      <div class="row">
+        <div class="col-6 offset-md-2">
+          <form action="{% url 'create-place' %}" method="post">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <button class="btn btn-dark" type="submit" value="Submit">Сохранить</button>
+  </form>
+        </div>
+      </div>
+</div>
+
+
+  <div>
+    {{ map|safe }}
+  </div>
+{% endblock %}

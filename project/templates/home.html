@@ -9,9 +9,16 @@
             <div class="col-1">
               <p> {{ ass.extra_data.name }} </p>
             </div>
+            <div class="col-1">
             <button class="btn btn-dark">
               <a href="{% url 'logout' %}">Выйти</a>
             </button>
+            </div>
+            <div class="col-1">
+              <button class="btn btn-dark">
+                <a href="{% url 'create-place' %}">Добавить воспоминание</a>
+              </button>
+            </div>
         {% endif %}
       {% endfor %}
   </div>
@@ -19,4 +26,30 @@
 {% endblock %}
 
 {% block content %}
+  <div class="container mt-1">
+    <div class="row">
+      <div class="col-6 offset-md-2">
+        <h1 class="mb-5">Ваши воспоминания</h1>
+        {% if not places %}
+          <p> У вас нет воспоминаний! :( </p>
+          <p> Добавьте через кнопку в шапке! </p>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% for place in places %}
+    <div class="container mt-1">
+      <div class="row">
+        <div class="col-6 offset-md-2">
+          <div class="card mb-4">
+            <div class="card-body">
+              <h5 class="card-title"><a href="{% url 'place-detail' place.id %}">{{ place.title }}</a></h5>
+              <p class="card-text">{{ place.text|truncatewords:10  }}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
 {% endblock %}

@@ -19,8 +19,7 @@ def home(request):
     places = Place.objects.filter(user=request.user)
 
     if not places:
-        places = False
-        return render(request, 'home.html', context={'palces': places})
+        return render(request, 'home.html', context={'places': places})
 
     geo = []
     for place in places:

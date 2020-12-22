@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'social_django',
-    'fb_auth.apps.FbAuthConfig',
     'places.apps.PlacesConfig',
 ]
 

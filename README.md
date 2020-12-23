@@ -63,6 +63,7 @@ ID-приложения и секретный ключ приложения - н
 * `FACEBOOK_APP_ID` - id приложения facebook.
 * `FACEBOOK_APP_SECRET` - секретный ключ приложения facebook.
 * `DATABASE_URL` - путь к БД.
+* `ENV=development` - чтобы не было проблем с `django-heroku`.
 
 
 ## Используемые библиотеки

@@ -130,8 +130,8 @@ AUTHENTICATION_BACKENDS = [
     'django.contrib.auth.backends.ModelBackend',
 ]
 
-SOCIAL_AUTH_FACEBOOK_KEY = env.str('FACEBOOK_APP_ID')
-SOCIAL_AUTH_FACEBOOK_SECRET = env.str('FACEBOOK_APP_SECRET')
+SOCIAL_AUTH_FACEBOOK_KEY = env.str('FACEBOOK_APP_ID', 'some_id')
+SOCIAL_AUTH_FACEBOOK_SECRET = env.str('FACEBOOK_APP_SECRET', 'some_secret')
 SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
     'fields': 'id, name, email, picture.type(large), link'

@@ -29,13 +29,8 @@ jobs:
     - name: Run migrations
       run: python manage.py migrate
     - name: Run tests
-      run: python manage.py test
+      run: coverage run --source=places manage.py test
     - name: Upload Coverage
       run: coveralls
       env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-    - name: Coveralls
-      uses: coverallsapp/github-action@master
-      with:
-        github-token: ${{ secrets.GITHUB_TOKEN }}

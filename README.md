@@ -1,5 +1,5 @@
 ![github_action_tests](https://github.com/OttoAndrey/places_remember/workflows/github_action_tests/badge.svg)
-
+[![Coverage Status](https://coveralls.io/repos/github/OttoAndrey/places_remember/badge.svg?branch=master)](https://coveralls.io/github/OttoAndrey/places_remember?branch=master)
 
 # Тестовое задание "Places Remember"
 

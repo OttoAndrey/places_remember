@@ -1,4 +1,4 @@
-    name: Python application
+    name: github_action_tests
     on: [push]
     jobs:
       build:

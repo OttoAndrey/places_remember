@@ -89,6 +89,17 @@ DATABASES = {
     'default': env.dj_db_url('DATABASE_URL', 'sqlite:///db.sqlite3')
 }
 
+if os.environ.get('GITHUB_WORKFLOW'):
+    DATABASES = {
+        'default': {
+           'ENGINE': 'django.db.backends.postgresql',
+           'NAME': 'github_actions',
+           'USER': 'postgres',
+           'PASSWORD': 'postgres',
+           'HOST': '127.0.0.1',
+           'PORT': '5432',
+        }
+    }
 
 LOGIN_URL = 'login'
 LOGIN_REDIRECT_URL = 'home'

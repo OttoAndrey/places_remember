@@ -1,3 +1,6 @@
+![github_action_tests](https://github.com/OttoAndrey/places_remember/workflows/github_action_tests/badge.svg)
+
+
 # Тестовое задание "Places Remember"
 
 Веб-приложение, которое позволяет хранить воспоминания о посещаемых местах.

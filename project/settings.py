@@ -170,5 +170,5 @@ STATICFILES_DIRS = (
 django_heroku.settings(locals())
 
 
-if env.str('ENV') == 'development':
+if env.str('ENV', 'not_dev') == 'development':
     del DATABASES['default']['OPTIONS']['sslmode']

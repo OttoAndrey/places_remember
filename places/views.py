@@ -1,7 +1,7 @@
 import folium
 from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseRedirect
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse
 
 from .forms import PlaceForm
@@ -17,7 +17,7 @@ def login(request):
 
 @login_required
 def home(request):
-    places = Place.objects.filter(user=request.user)
+    places = request.user.places.order_by('-pk')
 
     if not places:
         return render(request, 'home.html', context={'places': places})
@@ -25,7 +25,6 @@ def home(request):
     geo = []
     for place in places:
         point = {
-            'id': place.id,
             'title': place.title,
             'text': place.text,
         }
@@ -38,17 +37,7 @@ def create_place(request):
     if request.method == 'POST':
         form = PlaceForm(request.POST)
         if form.is_valid():
-            title = form.cleaned_data['title']
-            text = form.cleaned_data['text']
-            lat = form.cleaned_data['lat']
-            lng = form.cleaned_data['lng']
-            Place.objects.create(
-                title=title,
-                text=text,
-                lat=lat,
-                lng=lng,
-                user=request.user,
-            )
+            Place.objects.create(**form.cleaned_data, user=request.user,)
             return HttpResponseRedirect(reverse('home'))
     else:
         folium_map = folium.Map(location=KRSK_CENTER, zoom_start=12)
@@ -59,9 +48,8 @@ def create_place(request):
 
 @login_required
 def place_detail(request, place_id):
-    place = Place.objects.filter(user=request.user, pk=place_id)[0]
+    place = get_object_or_404(Place, user=request.user, pk=place_id)
     center = [place.lat, place.lng]
     folium_map = folium.Map(location=center, zoom_start=12)
     folium.Marker(center).add_to(folium_map)
-
     return render(request, 'place_detail.html', context={'place': place, 'map': folium_map._repr_html_()})

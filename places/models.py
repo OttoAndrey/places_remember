@@ -13,4 +13,4 @@ class Place(models.Model):
         max_digits=17,
         decimal_places=15,
     )
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, related_name='places')

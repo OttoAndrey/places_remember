@@ -25,6 +25,7 @@ def home(request):
     geo = []
     for place in places:
         point = {
+            'id': place.id,
             'title': place.title,
             'text': place.text,
         }

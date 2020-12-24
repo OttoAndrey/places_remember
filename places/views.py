@@ -6,6 +6,7 @@ from django.urls import reverse
 
 from .forms import PlaceForm
 from .models import Place
+from .utils import LatLngPopup
 
 KRSK_CENTER = [56.014899, 92.859867]
 
@@ -51,7 +52,7 @@ def create_place(request):
             return HttpResponseRedirect(reverse('home'))
     else:
         folium_map = folium.Map(location=KRSK_CENTER, zoom_start=12)
-        folium_map.add_child(folium.LatLngPopup())
+        folium_map.add_child(LatLngPopup())
         form = PlaceForm()
     return render(request, 'create_place.html', context={'form': form, 'map': folium_map._repr_html_()})
 

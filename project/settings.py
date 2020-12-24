@@ -132,14 +132,15 @@ AUTHENTICATION_BACKENDS = [
 
 SOCIAL_AUTH_FACEBOOK_KEY = env.str('FACEBOOK_APP_ID', 'some_id')
 SOCIAL_AUTH_FACEBOOK_SECRET = env.str('FACEBOOK_APP_SECRET', 'some_secret')
-SOCIAL_AUTH_FACEBOOK_SCOPE = ['email']
+SOCIAL_AUTH_FACEBOOK_SCOPE = ['email', 'user_link']
 SOCIAL_AUTH_FACEBOOK_PROFILE_EXTRA_PARAMS = {
-    'fields': 'id, name, email, picture.type(large),'
+  'fields': 'id, name, email, picture.type(large), link'
 }
 SOCIAL_AUTH_FACEBOOK_EXTRA_DATA = [
     ('name', 'name'),
     ('email', 'email'),
     ('picture', 'picture'),
+    ('link', 'profile_url'),
 ]
 
 
